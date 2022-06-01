@@ -47,9 +47,6 @@ jobs:
     #- name: WeChat notification
     #  run: curl https://sc.ftqq.com/${{ secrets.ServerChan }}.send?text=${{ env.FILE_NAME }}开始编译
 
-    - name: Check space usage查看磁盘使用情况
-      if: (!cancelled())
-      run: df -hT
 
     - name: Checkout
       uses: actions/checkout@master
@@ -121,10 +118,10 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
         
-    - name: Load custom P3
-      run: |
-        chmod +x $DIY_P3_SH
-        $GITHUB_WORKSPACE/$DIY_P3_SH
+#    - name: Load custom P3
+#      run: |
+#        chmod +x $DIY_P3_SH
+#        $GITHUB_WORKSPACE/$DIY_P3_SH
 
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
